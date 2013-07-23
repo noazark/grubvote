@@ -20,4 +20,5 @@ GrubVote::Application.routes.draw do
 	get "oauth/callback" => "oauths#callback"
 	get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 	get "logout" => "user_sessions#destroy", :as => :logout
+	get "login" => "user_sessions#new", :as => :login
 end

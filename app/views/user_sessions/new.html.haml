@@ -1,0 +1,4 @@
+.small-2.small-centered.columns
+	%h2 Login
+	= link_to 'Github', auth_at_provider_path(:provider => :github), class: ['button', 'small', 'small-6']
+	= link_to 'Google', auth_at_provider_path(:provider => :google), class: ['button', 'small', 'small-6']

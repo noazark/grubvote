@@ -1,4 +1,6 @@
 class VotesController < ApplicationController
+	before_filter :require_login
+
 	def show
 		@invite = Invite.find_by_token! params[:id]
 	end
