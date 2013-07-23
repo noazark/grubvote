@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
 
 	def index
 		unless params[:q].nil?
-			restaurants = Restaurant.where("LOWER(name) like LOWER('?%')", "#{params[:q]}")
+			restaurants = Restaurant.where("name like ?", "%#{params[:q]}%")
 			respond_with restaurants
 		else
 			respond_with []
