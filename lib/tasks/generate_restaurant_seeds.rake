@@ -3,6 +3,8 @@ require 'oauth'
 require 'open-uri'
 require 'pp'
 
+require './db/seeds/restaurants'
+
 consumer_key = 'l8gQ5H0ny4tWl4yQbKNTdw'
 consumer_secret = 'Cyw79dc1YDAZpYVBJO39g8enC6k'
 token = 'Nyzq7D94E4pUcgBiWmxd2B78nIau7Pua'
@@ -16,7 +18,7 @@ consumer = OAuth::Consumer.new(consumer_key, consumer_secret, {:site => "http://
 def get_restaurants(location="94105", page=1, limit=20)
 	offset = page * limit
 
-	path = URI::encode("/v2/search?term=restaurants&location=#{location}&limit=20&offset=#{offset}")
+	path = URI::encode("/v2/search?term=lunch&location=#{location}&limit=20&offset=#{offset}")
 
 	puts "requesting page #{page}"
 	request = @access_token.get(path)
@@ -34,7 +36,7 @@ namespace :db do
 	task :generate_restaurant_seeds do
 		initial_request = get_restaurants("San Francisco")
 		pages = (initial_request[:total] / 20).to_i
-		pages_max = 1000 / 20
+		pages_max = 49
 
 		pages = pages_max if pages > pages_max
 
@@ -60,6 +62,8 @@ namespace :db do
 				yelp_url: business[:url]
 			}
 		end
+
+		yelp.concat YELP
 
 		unless Dir.exist?(Rails.root.join('db', 'seeds'))
 			Dir.mkdir(Rails.root.join('db', 'seeds'))
