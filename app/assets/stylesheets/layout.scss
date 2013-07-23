@@ -1,0 +1,13 @@
+.top-bar {
+	margin-bottom: 0;
+
+	&+ .notifications {
+		margin-bottom: 1.875em;
+	}
+}
+
+.label {
+	p {
+		margin: 0;
+	}
+}

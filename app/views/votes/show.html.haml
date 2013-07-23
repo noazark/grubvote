@@ -1,0 +1,18 @@
+- unless @invite.vote
+	.columns
+		= form_for @invite, url: vote_path(@invite) do |f|
+			- f.fields_for :vote do |vote|
+				.row.collapse
+					.small-5.columns
+						= vote.text_field :restaurant_id, class: 'small-6'
+
+					.small-1.columns
+						= f.submit 'vote', class: ['button', 'prefix']
+
+				.row
+					%p.columns
+						choose the restaurant you want to eat at and click vote
+
+- else
+	You voted for
+	= link_to @invite.vote.restaurant.name, @invite.vote.restaurant.yelp_url

@@ -1,0 +1,24 @@
+%li.invite
+	%h4
+		- if invite.grub_session.inviter.email === current_user.email
+			you
+		- else
+			= invite.grub_session.inviter.email
+
+		invited #{pluralize(invite.grub_session.invites.count - 1, "other")}
+
+	- unless invite.grub_session.closed?
+		%h5.subheader
+			= link_to 'vote', vote_path(invite)
+			- if invite.grub_session.inviter == invite.user
+				or
+				= link_to 'close poll', close_grub_session_path(invite.grub_session), method: :post
+
+	- else
+		%h5
+			the group voted for
+			= link_to invite.grub_session.decision.name, invite.grub_session.decision.yelp_url
+
+	%p
+		- invite.grub_session.invites.each do |invite|
+			%span.label{class: "#{invite.vote ? 'success' : 'secondary'}"}= invite.email || invite.user.email

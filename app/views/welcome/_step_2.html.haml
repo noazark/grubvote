@@ -1,0 +1,12 @@
+%h2 Invite
+
+%p
+	- if logged_in?
+		= link_to 'Invite some friends', new_grub_session_path
+		%br
+		or
+		%br
+		=link_to 'join a group', :grub_sessions
+
+	- else
+		Once you are logged in, invite others to join you in your food-time caper.

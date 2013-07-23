@@ -1,0 +1,9 @@
+development:
+  adapter: mysql
+  database: grub_vote_development
+  host: localhost
+
+test:
+  adapter: mysql
+  database: grub_vote_test
+  host: localhost

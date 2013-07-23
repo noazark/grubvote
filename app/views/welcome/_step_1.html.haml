@@ -1,0 +1,7 @@
+%h2 Login
+
+- if logged_in?
+	DONE!
+- else
+	= link_to 'Github', auth_at_provider_path(:provider => :github), class: ['button', 'small', 'small-6']
+	= link_to 'Google', auth_at_provider_path(:provider => :google), class: ['button', 'small', 'small-6']

@@ -1,0 +1,11 @@
+.columns
+	= form_for @grub_session do |f|
+		.row.collapse
+			.small-5.columns
+				= f.text_field :invite_emails, class: 'small-6'
+			.small-1.columns
+				= f.submit 'invite', class: ['button', 'prefix']
+
+		.row
+			%p.columns
+				add the email addresses of guests you'd like to invite

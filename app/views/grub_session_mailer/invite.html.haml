@@ -1,0 +1,6 @@
+%p
+	Hey! You've been invited to get some grub
+	with #{@invite.grub_session.inviter.email}.
+
+%p
+	= link_to "Vote on where you'd like to eat", vote_url(@invite)

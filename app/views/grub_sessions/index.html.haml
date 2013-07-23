@@ -1,0 +1,17 @@
+- if @invites.count > 0
+	.columns
+		%ul.no-bullet
+			= render partial: "invite", collection: @invites
+
+	%hr
+
+	.columns
+		%p
+			key:
+			%span.label.secondary invited
+			%span.label.success voted
+
+- else
+	.columns
+		%p
+			No invites yet, how about #{link_to "you invite some friends out for grub", new_grub_session_path}.

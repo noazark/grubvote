@@ -1,0 +1,1 @@
+GrubVote::Application.config.secret_key_base = '7998cdf725f6b6d2e7d262195e2555dac78ad243acb760f456eca3809e67390f017e5f3c69c593abe533d37fbb393cd42dc79f6c66bf84696d32385f263678a7'
