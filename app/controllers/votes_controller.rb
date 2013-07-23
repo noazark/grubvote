@@ -14,6 +14,10 @@ class VotesController < ApplicationController
 			invite.save
 		end
 
+		if current_user.email.nil?
+			current_user.update_attribute :email, invite.email
+		end
+
 		redirect_to :grub_sessions
 	end
 
