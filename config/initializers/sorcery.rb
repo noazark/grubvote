@@ -91,7 +91,7 @@ Rails.application.config.sorcery.configure do |config|
 		Rails.logger.warn 'Github login disabled, OAUTH_GITHUB_KEY and OAUTH_GITHUB_SECRET must be set.'
 	end
 
-	config.github.callback_url = "http://localhost:3000/oauth/callback?provider=github"
+	config.github.callback_url = "http://#{ENV['HOST']}/oauth/callback?provider=github"
 	config.github.user_info_mapping = {:email => "email"}
 	config.github.scope = ["user:email"]
 
@@ -102,7 +102,7 @@ Rails.application.config.sorcery.configure do |config|
 		Rails.logger.warn 'Google login disabled, OAUTH_GOOGLE_KEY and OAUTH_GOOGLE_SECRET must be set.'
 	end
 
-	config.google.callback_url = "http://localhost:3000/oauth/callback?provider=google"
+	config.google.callback_url = "http://#{ENV['HOST']}/oauth/callback?provider=google"
 	config.google.user_info_mapping = {:email => "email"}
 
 	# --- user config ---
