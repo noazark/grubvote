@@ -12,3 +12,12 @@ $ ->
 		allowFreeTagging: true
 		allowTabOut: true
 		tokenLimit: 1
+		resultsFormatter: (item) ->
+			string = item[@propertyToSearch]
+			"""
+			<li>
+				#{if @enableHTML then string else _escapeHTML(string)}
+				<br>
+				<p>#{item['description']}</p>
+			</li>
+			"""

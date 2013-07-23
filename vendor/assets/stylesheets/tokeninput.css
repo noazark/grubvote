@@ -93,9 +93,12 @@ div.token-input-dropdown {
 
 div.token-input-dropdown p {
     margin: 0;
-    padding: 5px;
-    font-weight: bold;
+    font-weight: normal;
     color: #777;
+}
+
+div.token-input-dropdown p.loading, div.token-input-dropdown p.hint {
+    padding: 5px;
 }
 
 div.token-input-dropdown ul {
@@ -105,7 +108,7 @@ div.token-input-dropdown ul {
 
 div.token-input-dropdown ul li {
     background-color: #fff;
-    padding: 3px;
+    padding: 5px;
     list-style-type: none;
 }
 

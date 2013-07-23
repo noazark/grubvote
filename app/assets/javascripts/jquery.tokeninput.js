@@ -36,7 +36,7 @@ var DEFAULT_SETTINGS = {
     zindex: 999,
     resultsLimit: null,
 
-    enableHTML: false,
+    enableHTML: true,
 
     resultsFormatter: function(item) {
       var string = item[this.propertyToSearch];
@@ -819,14 +819,14 @@ $.TokenList = function (input, url_or_data, settings) {
 
     function show_dropdown_searching () {
         if($(input).data("settings").searchingText) {
-            dropdown.html("<p>" + escapeHTML($(input).data("settings").searchingText) + "</p>");
+            dropdown.html("<p class='loading'>" + escapeHTML($(input).data("settings").searchingText) + "</p>");
             show_dropdown();
         }
     }
 
     function show_dropdown_hint () {
         if($(input).data("settings").hintText) {
-            dropdown.html("<p>" + escapeHTML($(input).data("settings").hintText) + "</p>");
+            dropdown.html("<p class='hint'>" + escapeHTML($(input).data("settings").hintText) + "</p>");
             show_dropdown();
         }
     }
