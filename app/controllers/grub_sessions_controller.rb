@@ -1,4 +1,6 @@
 class GrubSessionsController < ApplicationController
+	decorates_assigned :invites
+
 	def index
 		@invites = current_user.invites
 	end

@@ -3,7 +3,8 @@
 		%li.name
 			- if logged_in?
 				%h1
-					%a #{current_user.email}, it's time for lunch
+					%a #{current_user.formal}, it's time for lunch
+
 			- else
 				%h1
 					%a I cannot wait to see what you have for lunch

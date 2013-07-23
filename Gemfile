@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'sorcery'
+gem 'draper'
 
 gem 'redis-namespace'
 gem 'redis-objects'
