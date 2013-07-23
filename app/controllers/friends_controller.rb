@@ -1,8 +1,4 @@
 class FriendsController < ApplicationController
+	include Searchable
 	respond_to :json
-
-	def index
-		params.require(:q)
-		respond_with []
-	end
 end
