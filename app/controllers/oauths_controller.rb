@@ -13,7 +13,6 @@ class OauthsController < ApplicationController
 			begin
 				@user = create_from(provider)
 
-				reset_session
 				auto_login(@user)
 				redirect_back_or_to root_path, :notice => "Logged in from #{provider.titleize}!"
 			rescue
