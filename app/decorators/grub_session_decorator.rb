@@ -4,7 +4,7 @@ class GrubSessionDecorator < Draper::Decorator
 	delegate :closed?
 
 	def inviter
-		if model.inviter.email === h.current_user.model.email
+		if model.inviter.email === h.current_user.email
 			'you'
 		else
 			model.inviter.email
