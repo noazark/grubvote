@@ -22,6 +22,10 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'zurb-foundation', '~> 4.3.0'
 gem 'uglifier', '>= 1.3.0'
 
+group :production do
+	gem 'rails_12factor'
+end
+
 group :development, :production do
 	gem 'postmark-rails'
 end
