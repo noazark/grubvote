@@ -28,10 +28,7 @@ class GrubSessionsController < ApplicationController
 	def close
 		grub_session = current_user.grub_sessions.find_by_token!(params[:id])
 		grub_session.update_attribute :decision,
-			grub_session
-				.votes
-				.sample
-				.restaurant
+			MostPopularRestaurant.find(grub_session.votes)
 
 		voting_closed_emails = grub_session.invites.map do |invite|
 			GrubSessionMailer.voting_closed(invite)
