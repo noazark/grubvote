@@ -7,6 +7,11 @@ class GrubSession < ActiveRecord::Base
 
 	before_validation :generate_token
 
+	def close
+		update_attribute :decision,
+			MostPopularRestaurant.find(votes)
+	end
+
 	def closed?
 		decision_id?
 	end
