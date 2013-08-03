@@ -1,4 +1,8 @@
 %h2 Vote
 
 %p
-	Cast your vote letting the rest of your group know where you want to eat.
+	- if logged_in?
+		=link_to 'join a group', :grub_sessions
+
+	- else
+		Cast your vote letting the rest of your group know where you want to eat.
