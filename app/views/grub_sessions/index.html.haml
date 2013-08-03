@@ -1,5 +1,12 @@
 - if invites.count > 0
 	.columns
+		%p
+			If you don't see anyone you want to eat with,
+			= link_to "invite some people you like", new_grub_session_path
+
+	%hr
+
+	.columns
 		%ul.no-bullet
 			= render partial: "invite", collection: invites
 
