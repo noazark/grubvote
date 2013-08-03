@@ -7,6 +7,11 @@ class Invite < ActiveRecord::Base
 
 	before_validation :generate_token
 
+	def self.recent
+		where("created_at >= ?", Time.now - 24.hours)
+			.order("created_at DESC")
+	end
+
 	def email=(value)
 		user = User.find_by_email(value)
 		self.user = user

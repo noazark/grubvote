@@ -1,2 +1,2 @@
 - if logged_in?
-	= link_to pluralize(current_user.invites.count, "invite"), :grub_sessions
+	= link_to pluralize(current_user.invites.recent.count, "invite"), :grub_sessions

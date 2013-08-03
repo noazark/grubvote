@@ -2,7 +2,7 @@ class GrubSessionsController < ApplicationController
 	decorates_assigned :invites
 
 	def index
-		@invites = current_user.invites
+		@invites = current_user.invites.recent
 	end
 
 	def new
