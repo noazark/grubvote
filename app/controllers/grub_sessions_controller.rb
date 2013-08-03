@@ -12,23 +12,17 @@ class GrubSessionsController < ApplicationController
 	def create
 		grub_session = current_user.grub_sessions.create(invite_params)
 
-		invite_emails = GrubSessionMailer.bulk_invite(grub_session.invites)
-		GrubSessionMailer.deliver_builk_mail(invite_emails)
+		voting = Voting.new(grub_session)
+		voting.open
 
-		personal_invite = grub_session.invites.create(
-			user: current_user,
-			email: current_user.email
-		)
-
-		redirect_to vote_path(personal_invite)
+		redirect_to vote_path(voting.inviter_invite)
 	end
 
 	def close
 		grub_session = current_user.grub_sessions.find_by_token!(params[:id])
-		grub_session.close
 
-		voting_closed_emails = GrubSessionMailer.bulk_voting_closed(grub_session.invites)
-		GrubSessionMailer.deliver_builk_mail(voting_closed_emails)
+		voting = Voting.new(grub_session)
+		voting.close
 
 		redirect_to :grub_sessions
 	end

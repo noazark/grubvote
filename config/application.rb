@@ -6,5 +6,6 @@ Bundler.require(:default, Rails.env)
 
 module GrubVote
 	class Application < Rails::Application
+		config.autoload_paths += %W(#{config.root}/app/services)
 	end
 end

@@ -9,6 +9,8 @@ class VotesController < ApplicationController
 		invite = Invite.find_by_token params[:id]
 		vote = invite.create_vote(vote_params)
 
+		voting = Voting.new(invite.grub_session)
+
 		unless invite.user_id?
 			invite.user = current_user
 			invite.save
@@ -19,9 +21,7 @@ class VotesController < ApplicationController
 		end
 
 		if invite.grub_session.all_votes_in?
-			invite.grub_session.close
-			voting_closed_emails = GrubSessionMailer.bulk_voting_closed(invite.grub_session.invites)
-			GrubSessionMailer.deliver_builk_mail(voting_closed_emails)
+			voting.close
 		end
 
 		redirect_to :grub_sessions
