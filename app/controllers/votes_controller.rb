@@ -18,6 +18,12 @@ class VotesController < ApplicationController
 			current_user.update_attribute :email, invite.email
 		end
 
+		if invite.grub_session.all_votes_in?
+			invite.grub_session.close
+			voting_closed_emails = GrubSessionMailer.bulk_voting_closed(invite.grub_session.invites)
+			GrubSessionMailer.deliver_builk_mail(voting_closed_emails)
+		end
+
 		redirect_to :grub_sessions
 	end
 

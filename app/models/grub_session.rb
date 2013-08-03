@@ -16,6 +16,12 @@ class GrubSession < ActiveRecord::Base
 		decision_id?
 	end
 
+	def all_votes_in?
+		total_votes_in = invites.map(&:vote).compact.count
+		total_invites = invites.count
+		invites.map(&:vote).compact.count === invites.count
+	end
+
 	def invite_emails=(emails)
 		emails_array = emails.split(',')
 
