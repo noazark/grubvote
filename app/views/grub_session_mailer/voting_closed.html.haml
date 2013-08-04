@@ -2,4 +2,4 @@
 	Voting has closed! And the winner is:
 
 %p
-	%strong= @invite.grub_session.decision.name
+	%strong= link_to @invite.grub_session.decision.name, @invite.grub_session.decision.yelp_url

@@ -8,6 +8,7 @@ class GrubSessionMailer < ActionMailer::Base
 		@invite = invite
 		mail(
 			to: invite.email,
+			subject: 'Grab Some Grub',
 			tag: 'invite'
 		)
 	end
@@ -22,7 +23,8 @@ class GrubSessionMailer < ActionMailer::Base
 		@invite = invite
 		mail(
 			to: invite.email,
-			tag: 'invite'
+			subject: 'Voting Closed',
+			tag: 'voting closed'
 		)
 	end
 
