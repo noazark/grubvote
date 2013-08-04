@@ -20,8 +20,8 @@ class Voting
 
 	def close(should_deliver=true)
 		unless @grub_session.closed?
-			@grub_session.update_attribute :decision,
-				MostPopularRestaurant.find(@grub_session.votes)
+			popularity = Popularity.new(@grub_session.votes, :restaurant)
+			@grub_session.update_attribute :decision, popularity.most_popular
 		end
 
 		deliver_close if should_deliver
